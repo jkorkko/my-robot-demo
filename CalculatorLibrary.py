@@ -1,4 +1,5 @@
 from calculator import Calculator, CalculationError
+from robot.api import logger
 
 
 class CalculatorLibrary(object):
@@ -65,3 +66,13 @@ class CalculatorLibrary(object):
         else:
             raise AssertionError("'%s' should have caused an error."
                                  % expression)
+    
+    def get_current_result(self):
+        "Get the current result. Log the value in robot."
+        logger.info(f"Current calculator result: {self._result}")
+        return self._result
+    
+    def push_button_multiple_times(self, button: str, times: int =  1):
+        for i in range(times):
+            self.push_button(button=button)
+        

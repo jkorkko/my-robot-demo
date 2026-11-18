@@ -37,3 +37,22 @@ Clear
     Push button    1
     Push button    C
     Result should be    ${EMPTY}    # ${EMPTY} is a built-in variable
+
+Get Result Into Robot Variable
+    Push Buttons    5 + 7
+    ${answer}    Get Current Result
+    Push Button    C
+    Push Buttons    5 + 7 =
+    ${answer}    Get Current Result
+    Should Be Equal As Integers    12    ${answer}
+
+Push Button With Default Count
+    Push Button Multiple Times    9
+    Result Should Be    9
+
+Push Button Multiple Times Using Type Conversion
+    Push Button Multiple Times    2    4
+    Result Should Be    2222
+
+Invalid Count Fails Type Conversion
+    Run Keyword And Expect Error    *ValueError*    Push Button Multiple Times    1    not_a_number
