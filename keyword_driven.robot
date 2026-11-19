@@ -56,3 +56,11 @@ Push Button Multiple Times Using Type Conversion
 
 Invalid Count Fails Type Conversion
     Run Keyword And Expect Error    *ValueError*    Push Button Multiple Times    1    not_a_number
+
+Custom Keyword Name With Float Return
+    ${total}=    Add Two Numbers    3    -5
+    Should Be Equal As Numbers    ${total}    -2
+
+Embedded Arguments Inside Keyword Phrase
+    User types '9 * 6 =' on keypad
+    Result Should Be    54
